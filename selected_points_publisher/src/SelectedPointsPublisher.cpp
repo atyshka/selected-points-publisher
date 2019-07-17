@@ -293,7 +293,7 @@ int SelectedPointsPublisher::_processSelectedAreaAndFindPoints()
     //pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_xyz(new pcl::PointCloud<pcl::PointXYZ>);
     //pcl::copyPointCloud(*this->current_pc_, *cloud_xyz);
 
-    // Vectors for the size of the croping box
+    // Vectors for the size of the cropping box
     Eigen::Vector4f cb_min(-bb_size_x/2.0, -bb_size_y/2.0, -bb_size_z/2.0, 1.0);
     Eigen::Vector4f cb_max(bb_size_x/2.0, bb_size_y/2.0, bb_size_z/2.0, 1.0);
 
@@ -362,7 +362,7 @@ int SelectedPointsPublisher::_processSelectedAreaAndFindPoints()
 int SelectedPointsPublisher::_publishAccumulatedPoints()
 {
     ROS_INFO_STREAM_NAMED("SelectedPointsPublisher._processSelectedAreaAndFindPoints",
-                          "Publishing the accumulated point cloud (" << this->num_acc_points_ < " points)");
+                          "Publishing the accumulated point cloud (" << this->num_acc_points_ << " points)");
     accumulated_segment_pc_->header = this->current_pc_->header;
     sensor_msgs::PointCloud2 accumulated_segment_ros;
     pcl::toROSMsg(*this->accumulated_segment_pc_, accumulated_segment_ros);
